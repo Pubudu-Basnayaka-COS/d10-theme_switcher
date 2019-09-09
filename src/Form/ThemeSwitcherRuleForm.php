@@ -276,4 +276,19 @@ class ThemeSwitcherRuleForm extends EntityForm {
     return $output;
   }
 
+  /**
+   * Checks whether a theme_switcher_rule exists.
+   *
+   * @param string $id
+   *   The theme_switcher_rule machine name.
+   *
+   * @return bool
+   *   Whether the theme_switcher_rule exists.
+   */
+  public function exist($id) {
+    $entity = $this->entityTypeManager->getStorage('theme_switcher_rule')
+      ->getQuery()->condition('id', $id)->execute();
+    return (bool) $entity;
+  }
+
 }
