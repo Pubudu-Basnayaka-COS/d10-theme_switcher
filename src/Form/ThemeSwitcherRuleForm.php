@@ -175,14 +175,9 @@ class ThemeSwitcherRuleForm extends EntityForm {
       ['theme_switcher_rule' => $entity]
     );
 
+    // Allows modules to alter the number the conditions.
+    $this->moduleHandler->alter('available_conditions', $definitions);
     foreach ($definitions as $condition_id => $definition) {
-      // Don't display the current theme condition (this creates a internal
-      // loop) and the language condition until the site has more than one
-      // language added.
-      if (($condition_id == 'language' && !$this->languageManager->isMultilingual())
-        || $condition_id == 'current_theme') {
-        continue;
-      }
 
       /** @var \Drupal\Core\Condition\ConditionInterface $condition */
       $condition = $this->conditionPluginManager->createInstance(

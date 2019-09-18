@@ -34,6 +34,26 @@ function theme_switcher_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * @param $definitions
+ */
+function theme_switcher_available_conditions_alter(&$definitions) {
+  foreach ($definitions as $condition_id => $definition) {
+    // Don't display the current theme condition (this creates a internal loop).
+    if ($condition_id == 'current_theme') {
+      unset($definitions[$condition_id]);
+    }
+    // Don't display the language condition until the site has more than one
+    // language added.
+    elseif ($condition_id == 'language') {
+      $language_manager = Drupal::service('language_manager');
+      if (!$language_manager->isMultilingual()) {
+        unset($definitions[$condition_id]);
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_ENTITY_TYPE_delete() for user_role entities.
  *
  * Removes deleted role from blocks that use it.
