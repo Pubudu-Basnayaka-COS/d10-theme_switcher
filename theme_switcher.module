@@ -34,7 +34,7 @@ function theme_switcher_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
- * @param $definitions
+ * Implements available_conditions_alter().
  */
 function theme_switcher_available_conditions_alter(&$definitions) {
   foreach ($definitions as $condition_id => $definition) {
