@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "drupal/core": "^8.5"
+    "drupal/core": "^8.5 || ^9"
   },
   "support": {
     "issues": "http://drupal.org/project/issues/theme_switcher",
