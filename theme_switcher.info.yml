@@ -3,8 +3,7 @@ description: 'Switches active themes on specific conditions.'
 package: User Interface
 
 type: module
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 
 configure: theme_switcher.admin
 
